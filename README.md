@@ -25,9 +25,9 @@ Or in config
 ```
 
 ## Example:
-You can replace the
-`CHtml::dropDownList()` by `MultipleSelect::dropDownList()`
-`CHtml::activeDropDownList()` by `MultipleSelect::activeDropDownList()`
+You can replace the <br>
+`CHtml::dropDownList()` by `MultipleSelect::dropDownList()` <br>
+`CHtml::activeDropDownList()` by `MultipleSelect::activeDropDownList()` <br>
 or
 ```php
     ...
