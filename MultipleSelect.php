@@ -8,7 +8,7 @@
  * @package extensions
  * @subpackage MultipleSelect
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
- * @version 1.1.0 rev.0
+ * @version 1.1.0 rev.1
  *
  * @see http://wenzhixin.net.cn/p/multiple-select/ jQuery Multiple Select
  */
@@ -38,10 +38,14 @@ class MultipleSelect extends CInputWidget
 
         $this->settings = array('single' => !$this->multiple, 'filter' => $this->filter);
 
+        if (isset($this->htmlOptions['placeholder'])) {
+            $this->settings = CMap::mergeArray($this->settings, array('placeholder' => $this->htmlOptions['placeholder']));
+            unset($this->htmlOptions['placeholder']);
+        }
+
         if (isset($this->htmlOptions['multiSelectOptions'])) {
             $this->settings = CMap::mergeArray($this->settings, $this->htmlOptions['multiSelectOptions']);
             unset($this->htmlOptions['multiSelectOptions']);
-
         }
 
         parent::init();
@@ -77,7 +81,7 @@ class MultipleSelect extends CInputWidget
         $min = YII_DEBUG ? '' : '.min';
         $lang = Yii::app()->language;
 
-        $cs = Yii::app()->getClientScript();
+        $cs = Yii::app()->clientScript;
         $cs->registerCoreScript('jquery');
         $cs->registerCssFile($this->assetsDir . '/multiple-select' . $min . '.css');
         $cs->registerScriptFile($this->assetsDir . '/jquery.multiple.select' . $min . '.js');
@@ -122,7 +126,7 @@ class MultipleSelect extends CInputWidget
 
     public static function activeMultiSelect($model, $attribute, $data, $htmlOptions = array())
     {
-        return self::multipleSelect(CHtml::activeName($model, $attribute) . '[]', CHtml::value($model, $attribute), $data, $htmlOptions);
+        return self::multiSelect(CHtml::activeName($model, $attribute) . '[]', CHtml::value($model, $attribute), $data, $htmlOptions);
     }
 
 }

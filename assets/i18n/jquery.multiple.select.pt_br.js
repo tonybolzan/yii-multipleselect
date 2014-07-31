@@ -4,6 +4,6 @@
 jQuery.extend(jQuery.fn.multipleSelect.defaults, {
     selectAllText: 'Selecionar Todos',
     allSelected: 'Todos Selecionados',
-    countSelected: '# de % Selecionados',
+    countSelected: '# de % selecionados',
     noMatchesFound: 'Nenhum resultado encontrado'
 });
